@@ -1,0 +1,20 @@
+{
+    "name": "knpuniversity/micro-symfony",
+    "require": {
+        "symfony/symfony": "^2.7",
+        "sensio/framework-extra-bundle": "^3.0",
+        "vlucas/phpdotenv": "^2.0",
+        "symfony/monolog-bundle": "^2.7"
+    },
+    "authors": [
+        {
+            "name": "Ryan Weaver",
+            "email": "ryan@thatsquality.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AppBundle\\": "AppBundle/"
+        }
+    }
+}
