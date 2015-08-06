@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerName oop.phpsc
+    DocumentRoot /var/www/summercamp/workshops/oop/web
+    DirectoryIndex index.php
+
+    <Directory /var/www/summercamp/workshops/oop/web>
+        Options FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>
