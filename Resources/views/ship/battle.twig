@@ -1,23 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {# todo - put battle result information here! #}
-
-    Winner: {{ winningShip ? winningShip.name : 'none' }}
-
     <table class="table table-hover">
-        <caption><i class="fa fa-rocket"></i> These ships are ready for their
-            next Mission
-        </caption>
-        <thead>
-        <tr>
-            <th>Ship</th>
-            <th>Weapon Power</th>
-            <th>Defense</th>
-        </tr>
-        </thead>
         <tbody>
-
+        <tr>
+            <th>Ship 1</th>
+            <td>{{ shipA.name }}</td>
+        </tr>
+        <tr>
+            <th>Ship 2</th>
+            <td>{{ shipB.name }}</td>
+        </tr>
+        <tr>
+            <th>Winner</th>
+            <td>
+                Winner: {{ winningShip ? winningShip.name : 'none' }}
+            </td>
+        </tr>
         </tbody>
     </table>
 
