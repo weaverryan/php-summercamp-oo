@@ -34,7 +34,17 @@
             "id": "di-shiploader-service",
             "name": "DI: ShipLoader service",
             "description": null
+        },
+        {
+            "id": "abstract-new-jediship",
+            "name": "abstract: new JediShip",
+            "description": null
+        },
+        {
+            "id": "abstract-abstractship",
+            "name": "abstract: AbstractShip",
+            "description": null
         }
     ],
-    "sha": "4263490844d506fd04c03da4e9847d07e95e41ee"
+    "sha": "6a302866629fe1c029eb06e01f970d52e9a186a0"
 }

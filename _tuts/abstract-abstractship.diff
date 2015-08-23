@@ -1,0 +1,146 @@
+diff --git a/AppBundle/Model/AbstractShip.php b/AppBundle/Model/AbstractShip.php
+new file mode 100644
+index 0000000..efdc4cc
+--- /dev/null
++++ b/AppBundle/Model/AbstractShip.php
+@@ -0,0 +1,18 @@
++<?php
++
++namespace AppBundle\Model;
++
++abstract class AbstractShip
++{
++    abstract public function getName();
++
++    abstract public function getType();
++
++    abstract public function getDefense();
++
++    abstract public function getWeaponPower();
++
++    abstract public function getSingleAttackEffectiveness();
++
++    abstract public function doesShipUseEvasiveManeuvering();
++}
+diff --git a/AppBundle/Model/JediShip.php b/AppBundle/Model/JediShip.php
+index dc9e30d..5b2d4f2 100644
+--- a/AppBundle/Model/JediShip.php
++++ b/AppBundle/Model/JediShip.php
+@@ -2,7 +2,7 @@
+ 
+ namespace AppBundle\Model;
+ 
+-class JediShip extends NormalShip
++class JediShip extends AbstractShip
+ {
+     public function doesShipUseEvasiveManeuvering()
+     {
+@@ -13,4 +13,29 @@ class JediShip extends NormalShip
+     {
+         return 'jedi';
+     }
++
++    public function getName()
++    {
++        return 'Our cool Jedi ship';
++    }
++
++    public function getDefense()
++    {
++        return 100;
++    }
++
++    public function getWeaponPower()
++    {
++        return 10;
++    }
++
++    public function getSingleAttackEffectiveness()
++    {
++        // devastating attack?
++        if (rand(0, 10) == 10) {
++            return 5 * $this->getWeaponPower();
++        }
++
++        return $this->getWeaponPower();
++    }
+ }
+diff --git a/AppBundle/Model/NormalShip.php b/AppBundle/Model/NormalShip.php
+index 524ce92..8b529ba 100644
+--- a/AppBundle/Model/NormalShip.php
++++ b/AppBundle/Model/NormalShip.php
+@@ -2,7 +2,7 @@
+ 
+ namespace AppBundle\Model;
+ 
+-class NormalShip
++class NormalShip extends AbstractShip
+ {
+     private $name;
+ 
+diff --git a/AppBundle/Service/BattleManager.php b/AppBundle/Service/BattleManager.php
+index c0d812d..e9e0017 100644
+--- a/AppBundle/Service/BattleManager.php
++++ b/AppBundle/Service/BattleManager.php
+@@ -2,18 +2,18 @@
+ 
+ namespace AppBundle\Service;
+ 
+-use AppBundle\Model\NormalShip;
++use AppBundle\Model\AbstractShip;
+ 
+ class BattleManager
+ {
+     /**
+      * Our complex fighting algorithm!
+      *
+-     * @param NormalShip $ship1
+-     * @param NormalShip $ship2
+-     * @return NormalShip|null if the ships destroyed each other
++     * @param AbstractShip $ship1
++     * @param AbstractShip $ship2
++     * @return AbstractShip|null if the ships destroyed each other
+      */
+-    public function battle(NormalShip $ship1, NormalShip $ship2)
++    public function battle(AbstractShip $ship1, AbstractShip $ship2)
+     {
+         $ship1Health = $ship1->getDefense();
+         $ship2Health = $ship2->getDefense();
+diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
+index 06cdcc4..f49d0da 100644
+--- a/AppBundle/Service/ShipLoader.php
++++ b/AppBundle/Service/ShipLoader.php
+@@ -2,6 +2,7 @@
+ 
+ namespace AppBundle\Service;
+ 
++use AppBundle\Model\AbstractShip;
+ use AppBundle\Model\JediShip;
+ use AppBundle\Model\NormalShip;
+ 
+@@ -15,7 +16,7 @@ class ShipLoader
+     }
+ 
+     /**
+-     * @return NormalShip[]
++     * @return AbstractShip[]
+      */
+     public function getShips()
+     {
+@@ -28,15 +29,13 @@ class ShipLoader
+         }
+ 
+         $jediShip = new JediShip('Our cool Jedi ship');
+-        $jediShip->setWeaponPower(10);
+-        $jediShip->setDefense(100);
+         $ships[] = $jediShip;
+ 
+         return $ships;
+     }
+ 
+     /**
+-     * @return NormalShip
++     * @return AbstractShip
+      */
+     public function getRandomShip()
+     {
