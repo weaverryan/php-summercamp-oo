@@ -102,7 +102,7 @@ index c0d812d..e9e0017 100644
          $ship1Health = $ship1->getDefense();
          $ship2Health = $ship2->getDefense();
 diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
-index 06cdcc4..f49d0da 100644
+index 06cdcc4..efc70da 100644
 --- a/AppBundle/Service/ShipLoader.php
 +++ b/AppBundle/Service/ShipLoader.php
 @@ -2,6 +2,7 @@
@@ -122,12 +122,14 @@ index 06cdcc4..f49d0da 100644
       */
      public function getShips()
      {
-@@ -28,15 +29,13 @@ class ShipLoader
+@@ -27,16 +28,14 @@ class ShipLoader
+             $ships[] = $this->createShipFromData($shipData);
          }
  
-         $jediShip = new JediShip('Our cool Jedi ship');
+-        $jediShip = new JediShip('Our cool Jedi ship');
 -        $jediShip->setWeaponPower(10);
 -        $jediShip->setDefense(100);
++        $jediShip = new JediShip();
          $ships[] = $jediShip;
  
          return $ships;

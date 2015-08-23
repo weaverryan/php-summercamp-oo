@@ -1,5 +1,5 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index af56521..2bcf9f9 100644
+index 0a9efe6..b2aa734 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
 @@ -15,7 +15,7 @@ class ShipController extends ContainerAware
@@ -20,7 +20,7 @@ index af56521..2bcf9f9 100644
  
          $shipLoader = new ShipLoader($pdo);
          $shipA = $shipLoader->getRandomShip();
-@@ -49,19 +49,4 @@ class ShipController extends ContainerAware
+@@ -53,19 +53,4 @@ class ShipController extends ContainerAware
  
          return new Response($html);
      }

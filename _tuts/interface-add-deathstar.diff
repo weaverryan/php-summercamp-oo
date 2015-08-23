@@ -1,0 +1,62 @@
+diff --git a/AppBundle/Model/Deathstar.php b/AppBundle/Model/Deathstar.php
+new file mode 100644
+index 0000000..2fdc946
+--- /dev/null
++++ b/AppBundle/Model/Deathstar.php
+@@ -0,0 +1,36 @@
++<?php
++
++namespace AppBundle\Model;
++
++class Deathstar extends AbstractShip
++{
++    public function doesShipUseEvasiveManeuvering()
++    {
++        return true;
++    }
++
++    public function getType()
++    {
++        return 'deathstar';
++    }
++
++    public function getName()
++    {
++        return 'The Deathstar';
++    }
++
++    public function getDefense()
++    {
++        return 10000000;
++    }
++
++    protected function getWeaponPower()
++    {
++        return 1000000;
++    }
++
++    protected function doesShipUseDevastatingAttack()
++    {
++        return true;
++    }
++}
+diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
+index efc70da..14d631c 100644
+--- a/AppBundle/Service/ShipLoader.php
++++ b/AppBundle/Service/ShipLoader.php
+@@ -3,6 +3,7 @@
+ namespace AppBundle\Service;
+ 
+ use AppBundle\Model\AbstractShip;
++use AppBundle\Model\Deathstar;
+ use AppBundle\Model\JediShip;
+ use AppBundle\Model\NormalShip;
+ 
+@@ -30,6 +31,7 @@ class ShipLoader
+ 
+         $jediShip = new JediShip();
+         $ships[] = $jediShip;
++        $ships[] = new Deathstar();
+ 
+         return $ships;
+     }

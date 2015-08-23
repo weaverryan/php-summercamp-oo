@@ -1,0 +1,140 @@
+diff --git a/AppBundle/Model/AbstractShip.php b/AppBundle/Model/AbstractShip.php
+index 366c6d5..2650eec 100644
+--- a/AppBundle/Model/AbstractShip.php
++++ b/AppBundle/Model/AbstractShip.php
+@@ -2,20 +2,12 @@
+ 
+ namespace AppBundle\Model;
+ 
+-abstract class AbstractShip
++abstract class AbstractShip implements ShipInterface
+ {
+-    abstract public function getName();
+-
+-    abstract public function getType();
+-
+-    abstract public function getDefense();
+-
+     abstract protected function getWeaponPower();
+ 
+     abstract protected function doesShipUseDevastatingAttack();
+ 
+-    abstract public function doesShipUseEvasiveManeuvering();
+-
+     public function getSingleAttackEffectiveness()
+     {
+         // devastating attack?
+diff --git a/AppBundle/Model/Deathstar.php b/AppBundle/Model/Deathstar.php
+index 2fdc946..36b9526 100644
+--- a/AppBundle/Model/Deathstar.php
++++ b/AppBundle/Model/Deathstar.php
+@@ -2,7 +2,7 @@
+ 
+ namespace AppBundle\Model;
+ 
+-class Deathstar extends AbstractShip
++class Deathstar implements ShipInterface
+ {
+     public function doesShipUseEvasiveManeuvering()
+     {
+@@ -24,13 +24,8 @@ class Deathstar extends AbstractShip
+         return 10000000;
+     }
+ 
+-    protected function getWeaponPower()
++    public function getSingleAttackEffectiveness()
+     {
+         return 1000000;
+     }
+-
+-    protected function doesShipUseDevastatingAttack()
+-    {
+-        return true;
+-    }
+ }
+diff --git a/AppBundle/Model/ShipInterface.php b/AppBundle/Model/ShipInterface.php
+new file mode 100644
+index 0000000..75959e0
+--- /dev/null
++++ b/AppBundle/Model/ShipInterface.php
+@@ -0,0 +1,21 @@
++<?php
++/**
++ * Created by PhpStorm.
++ * User: weaverryan
++ * Date: 8/23/15
++ * Time: 6:05 PM
++ */
++namespace AppBundle\Model;
++
++interface ShipInterface
++{
++    public function getName();
++
++    public function getType();
++
++    public function getDefense();
++
++    public function doesShipUseEvasiveManeuvering();
++
++    public function getSingleAttackEffectiveness();
++}
+diff --git a/AppBundle/Service/BattleManager.php b/AppBundle/Service/BattleManager.php
+index e9e0017..79c9845 100644
+--- a/AppBundle/Service/BattleManager.php
++++ b/AppBundle/Service/BattleManager.php
+@@ -2,18 +2,18 @@
+ 
+ namespace AppBundle\Service;
+ 
+-use AppBundle\Model\AbstractShip;
++use AppBundle\Model\ShipInterface;
+ 
+ class BattleManager
+ {
+     /**
+      * Our complex fighting algorithm!
+      *
+-     * @param AbstractShip $ship1
+-     * @param AbstractShip $ship2
+-     * @return AbstractShip|null if the ships destroyed each other
++     * @param ShipInterface $ship1
++     * @param ShipInterface $ship2
++     * @return ShipInterface|null if the ships destroyed each other
+      */
+-    public function battle(AbstractShip $ship1, AbstractShip $ship2)
++    public function battle(ShipInterface $ship1, ShipInterface $ship2)
+     {
+         $ship1Health = $ship1->getDefense();
+         $ship2Health = $ship2->getDefense();
+diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
+index 14d631c..849891b 100644
+--- a/AppBundle/Service/ShipLoader.php
++++ b/AppBundle/Service/ShipLoader.php
+@@ -2,7 +2,7 @@
+ 
+ namespace AppBundle\Service;
+ 
+-use AppBundle\Model\AbstractShip;
++use AppBundle\Model\ShipInterface;
+ use AppBundle\Model\Deathstar;
+ use AppBundle\Model\JediShip;
+ use AppBundle\Model\NormalShip;
+@@ -17,7 +17,7 @@ class ShipLoader
+     }
+ 
+     /**
+-     * @return AbstractShip[]
++     * @return ShipInterface[]
+      */
+     public function getShips()
+     {
+@@ -37,7 +37,7 @@ class ShipLoader
+     }
+ 
+     /**
+-     * @return AbstractShip
++     * @return ShipInterface
+      */
+     public function getRandomShip()
+     {

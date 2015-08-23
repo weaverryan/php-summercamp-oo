@@ -1,5 +1,5 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index c58dedb..e71e454 100644
+index 7dc7ae4..1b11496 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
 @@ -15,7 +15,14 @@ class ShipController extends ContainerAware
@@ -32,8 +32,8 @@ index c58dedb..e71e454 100644
 +
 +        $shipLoader = new ShipLoader($pdo);
          $shipA = $shipLoader->getRandomShip();
-         $shipB = $shipLoader->getRandomShip();
  
+         while ($shipA == ($shipB = $shipLoader->getRandomShip())) {
 diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
 index 796e9a4..108465b 100644
 --- a/AppBundle/Service/ShipLoader.php
