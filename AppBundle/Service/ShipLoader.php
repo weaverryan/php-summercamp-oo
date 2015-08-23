@@ -38,7 +38,9 @@ class ShipLoader
 
     private function createShipFromData(array $shipData)
     {
-        $ship = new NormalShip($shipData['name']);
+        $name = $shipData['name'];
+        $ship = new NormalShip($name);
+
         $ship->setId($shipData['id']);
         $ship->setWeaponPower($shipData['weapon_power']);
         $ship->setDefense($shipData['defense']);
