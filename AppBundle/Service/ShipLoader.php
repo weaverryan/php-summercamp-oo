@@ -52,13 +52,15 @@ class ShipLoader
     private function getPDO()
     {
         if ($this->pdo === null) {
-            $this->pdo = new \PDO(
+            $pdo = new \PDO(
                 'mysql:host=localhost;dbname=ezsummer_oo',
                 'root',
                 ''
             );
 
-            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+            $this->pdo = $pdo;
         }
 
         return $this->pdo;
