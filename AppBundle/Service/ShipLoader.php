@@ -41,7 +41,6 @@ class ShipLoader
         $name = $shipData['name'];
         $ship = new NormalShip($name);
 
-        $ship->setId($shipData['id']);
         $ship->setWeaponPower($shipData['weapon_power']);
         $ship->setDefense($shipData['defense']);
 

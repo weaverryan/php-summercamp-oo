@@ -4,8 +4,6 @@ namespace AppBundle\Model;
 
 class NormalShip
 {
-    private $id;
-
     private $name;
 
     private $weaponPower = 0;
@@ -15,22 +13,6 @@ class NormalShip
     public function __construct($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     public function getName()
