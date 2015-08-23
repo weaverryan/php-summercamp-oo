@@ -21,7 +21,7 @@ index 0000000..8ecc1b0
 +    abstract public function doesShipUseEvasiveManeuvering();
 +}
 diff --git a/AppBundle/Model/JediShip.php b/AppBundle/Model/JediShip.php
-index dc9e30d..5b2d4f2 100644
+index dc9e30d..853a4e6 100644
 --- a/AppBundle/Model/JediShip.php
 +++ b/AppBundle/Model/JediShip.php
 @@ -2,7 +2,7 @@
@@ -33,7 +33,7 @@ index dc9e30d..5b2d4f2 100644
  {
      public function doesShipUseEvasiveManeuvering()
      {
-@@ -13,4 +13,29 @@ class JediShip extends NormalShip
+@@ -13,4 +13,26 @@ class JediShip extends NormalShip
      {
          return 'jedi';
      }
@@ -48,19 +48,16 @@ index dc9e30d..5b2d4f2 100644
 +        return 100;
 +    }
 +
-+    public function getWeaponPower()
-+    {
-+        return 10;
-+    }
-+
 +    public function getSingleAttackEffectiveness()
 +    {
++        $weaponPower = 10;
++
 +        // devastating attack?
 +        if (rand(0, 10) == 10) {
-+            return 5 * $this->getWeaponPower();
++            return 5 * $weaponPower;
 +        }
 +
-+        return $this->getWeaponPower();
++        return $weaponPower;
 +    }
  }
 diff --git a/AppBundle/Model/NormalShip.php b/AppBundle/Model/NormalShip.php

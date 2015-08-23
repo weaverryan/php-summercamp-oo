@@ -24,22 +24,28 @@ index 8ecc1b0..366c6d5 100644
 +    }
  }
 diff --git a/AppBundle/Model/JediShip.php b/AppBundle/Model/JediShip.php
-index 5b2d4f2..eac4f3f 100644
+index 853a4e6..5c85c78 100644
 --- a/AppBundle/Model/JediShip.php
 +++ b/AppBundle/Model/JediShip.php
-@@ -29,13 +29,8 @@ class JediShip extends AbstractShip
-         return 10;
+@@ -24,15 +24,13 @@ class JediShip extends AbstractShip
+         return 100;
      }
  
 -    public function getSingleAttackEffectiveness()
-+    protected function doesShipUseDevastatingAttack()
++    protected function getWeaponPower()
      {
+-        $weaponPower = 10;
+-
 -        // devastating attack?
 -        if (rand(0, 10) == 10) {
--            return 5 * $this->getWeaponPower();
+-            return 5 * $weaponPower;
 -        }
--
--        return $this->getWeaponPower();
++        return 10;
++    }
+ 
+-        return $weaponPower;
++    protected function doesShipUseDevastatingAttack()
++    {
 +        return rand(0, 10) > 5;
      }
  }
