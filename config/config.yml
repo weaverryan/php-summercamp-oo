@@ -1,3 +1,6 @@
+services:
+    # todo - put any service definitions here
+
 framework:
     secret: %secret%
     templating:
