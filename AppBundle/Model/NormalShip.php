@@ -35,14 +35,6 @@ class NormalShip
     }
 
     /**
-     * @return int
-     */
-    public function getWeaponPower()
-    {
-        return $this->weaponPower;
-    }
-
-    /**
      * @param int $weaponPower
      */
     public function setWeaponPower($weaponPower)
@@ -59,10 +51,10 @@ class NormalShip
     {
         // devastating attack?
         if (rand(0, 10) == 10) {
-            return 5 * $this->getWeaponPower();
+            return 5 * $this->weaponPower;
         }
 
-        return $this->getWeaponPower();
+        return $this->weaponPower;
     }
 
     public function getType()
