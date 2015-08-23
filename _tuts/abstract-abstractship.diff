@@ -1,9 +1,9 @@
 diff --git a/AppBundle/Model/AbstractShip.php b/AppBundle/Model/AbstractShip.php
 new file mode 100644
-index 0000000..efdc4cc
+index 0000000..8ecc1b0
 --- /dev/null
 +++ b/AppBundle/Model/AbstractShip.php
-@@ -0,0 +1,18 @@
+@@ -0,0 +1,16 @@
 +<?php
 +
 +namespace AppBundle\Model;
@@ -15,8 +15,6 @@ index 0000000..efdc4cc
 +    abstract public function getType();
 +
 +    abstract public function getDefense();
-+
-+    abstract public function getWeaponPower();
 +
 +    abstract public function getSingleAttackEffectiveness();
 +
@@ -66,7 +64,7 @@ index dc9e30d..5b2d4f2 100644
 +    }
  }
 diff --git a/AppBundle/Model/NormalShip.php b/AppBundle/Model/NormalShip.php
-index 524ce92..8b529ba 100644
+index 5e9f3f9..d272f60 100644
 --- a/AppBundle/Model/NormalShip.php
 +++ b/AppBundle/Model/NormalShip.php
 @@ -2,7 +2,7 @@

@@ -44,7 +44,12 @@
             "id": "abstract-abstractship",
             "name": "abstract: AbstractShip",
             "description": null
+        },
+        {
+            "id": "abstract-adding-concrete-method",
+            "name": "abstract: Adding concrete method",
+            "description": null
         }
     ],
-    "sha": "6a302866629fe1c029eb06e01f970d52e9a186a0"
+    "sha": "edb354a48b5a2d7a796c0ef1d5ac34159d6a1acb"
 }

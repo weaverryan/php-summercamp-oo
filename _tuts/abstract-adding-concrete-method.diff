@@ -1,0 +1,76 @@
+diff --git a/AppBundle/Model/AbstractShip.php b/AppBundle/Model/AbstractShip.php
+index 8ecc1b0..366c6d5 100644
+--- a/AppBundle/Model/AbstractShip.php
++++ b/AppBundle/Model/AbstractShip.php
+@@ -10,7 +10,19 @@ abstract class AbstractShip
+ 
+     abstract public function getDefense();
+ 
+-    abstract public function getSingleAttackEffectiveness();
++    abstract protected function getWeaponPower();
++
++    abstract protected function doesShipUseDevastatingAttack();
+ 
+     abstract public function doesShipUseEvasiveManeuvering();
++
++    public function getSingleAttackEffectiveness()
++    {
++        // devastating attack?
++        if ($this->doesShipUseDevastatingAttack()) {
++            return 5 * $this->getWeaponPower();
++        }
++
++        return $this->getWeaponPower();
++    }
+ }
+diff --git a/AppBundle/Model/JediShip.php b/AppBundle/Model/JediShip.php
+index 5b2d4f2..eac4f3f 100644
+--- a/AppBundle/Model/JediShip.php
++++ b/AppBundle/Model/JediShip.php
+@@ -29,13 +29,8 @@ class JediShip extends AbstractShip
+         return 10;
+     }
+ 
+-    public function getSingleAttackEffectiveness()
++    protected function doesShipUseDevastatingAttack()
+     {
+-        // devastating attack?
+-        if (rand(0, 10) == 10) {
+-            return 5 * $this->getWeaponPower();
+-        }
+-
+-        return $this->getWeaponPower();
++        return rand(0, 10) > 5;
+     }
+ }
+diff --git a/AppBundle/Model/NormalShip.php b/AppBundle/Model/NormalShip.php
+index d272f60..0baca6e 100644
+--- a/AppBundle/Model/NormalShip.php
++++ b/AppBundle/Model/NormalShip.php
+@@ -47,18 +47,18 @@ class NormalShip extends AbstractShip
+         return rand(0, 10) > 8;
+     }
+ 
+-    public function getSingleAttackEffectiveness()
++    public function getType()
+     {
+-        // devastating attack?
+-        if (rand(0, 10) == 10) {
+-            return 5 * $this->weaponPower;
+-        }
++        return 'normal';
++    }
+ 
+-        return $this->weaponPower;
++    protected function doesShipUseDevastatingAttack()
++    {
++        return rand(0, 10) == 10;
+     }
+ 
+-    public function getType()
++    protected function getWeaponPower()
+     {
+-        return 'normal';
++        return $this->weaponPower;
+     }
+ }
