@@ -2,7 +2,7 @@
 
 namespace AppBundle\Model;
 
-class Ship
+class NormalShip
 {
     private $id;
 

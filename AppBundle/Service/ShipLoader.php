@@ -2,14 +2,14 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Model\Ship;
+use AppBundle\Model\NormalShip;
 
 class ShipLoader
 {
     private $pdo;
 
     /**
-     * @return Ship[]
+     * @return NormalShip[]
      */
     public function getShips()
     {
@@ -25,7 +25,7 @@ class ShipLoader
     }
 
     /**
-     * @return Ship
+     * @return NormalShip
      */
     public function getRandomShip()
     {
@@ -38,7 +38,7 @@ class ShipLoader
 
     private function createShipFromData(array $shipData)
     {
-        $ship = new Ship($shipData['name']);
+        $ship = new NormalShip($shipData['name']);
         $ship->setId($shipData['id']);
         $ship->setWeaponPower($shipData['weapon_power']);
         $ship->setDefense($shipData['defense']);
