@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {# todo - put battle result information here! #}
+
+    Winner: {{ winningShip ? winningShip.name : 'none' }}
+
+    <table class="table table-hover">
+        <caption><i class="fa fa-rocket"></i> These ships are ready for their
+            next Mission
+        </caption>
+        <thead>
+        <tr>
+            <th>Ship</th>
+            <th>Weapon Power</th>
+            <th>Defense</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('homepage') }}" class="btn btn-text">Battle Again!</a>
+{% endblock %}

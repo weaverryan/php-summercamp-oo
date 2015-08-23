@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table table-hover">
+        <caption><i class="fa fa-rocket"></i> These ships are ready for their
+            next Mission
+        </caption>
+        <thead>
+        <tr>
+            <th>Ship</th>
+            <th>Weapon Power</th>
+            <th>Defense</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ship in ships %}
+            <tr>
+                <td>{{ ship.name }}</td>
+                <td>{{ ship.weaponPower }}</td>
+                <td>{{ ship.defense }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('wage_battle') }}" class="btn btn-primary btn-lg">Battle Random Ships</a>
+{% endblock %}
