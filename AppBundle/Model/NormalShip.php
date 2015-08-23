@@ -90,4 +90,9 @@ class NormalShip
 
         return $this->getWeaponPower();
     }
+
+    static public function getType()
+    {
+        return 'normal';
+    }
 }
