@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use AppBundle\Service\BattleManager;
 use AppBundle\Service\ShipLoader;
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -30,7 +29,7 @@ class ShipController extends ContainerAware
     /**
      * @Route("/battle", name="wage_battle")
      */
-    public function battleAction(Request $request)
+    public function battleAction()
     {
         $shipLoader = new ShipLoader();
         $shipA = $shipLoader->getRandomShip();
