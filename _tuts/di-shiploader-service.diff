@@ -1,0 +1,41 @@
+diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
+index 2bcf9f9..8ea4c65 100644
+--- a/AppBundle/Controller/ShipController.php
++++ b/AppBundle/Controller/ShipController.php
+@@ -15,9 +15,7 @@ class ShipController extends ContainerAware
+      */
+     public function homepage()
+     {
+-        $pdo = $this->container->get('app_pdo');
+-
+-        $shipLoader = new ShipLoader($pdo);
++        $shipLoader = $this->container->get('ship_loader');
+         $ships = $shipLoader->getShips();
+ 
+         $html = $this->container->get('twig')->render(
+@@ -33,9 +31,7 @@ class ShipController extends ContainerAware
+      */
+     public function battleAction()
+     {
+-        $pdo = $this->container->get('app_pdo');
+-
+-        $shipLoader = new ShipLoader($pdo);
++        $shipLoader = $this->container->get('ship_loader');
+         $shipA = $shipLoader->getRandomShip();
+         $shipB = $shipLoader->getRandomShip();
+ 
+diff --git a/config/config.yml b/config/config.yml
+index 5296a98..e9f0519 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -11,6 +11,10 @@ services:
+                 - "@=constant('PDO::ATTR_ERRMODE')"
+                 - "@=constant('PDO::ERRMODE_EXCEPTION')"
+ 
++    ship_loader:
++        class: AppBundle\Service\ShipLoader
++        arguments: ['@app_pdo']
++
+ framework:
+     secret: %secret%
+     templating:

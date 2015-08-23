@@ -1,0 +1,58 @@
+diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
+index af56521..2bcf9f9 100644
+--- a/AppBundle/Controller/ShipController.php
++++ b/AppBundle/Controller/ShipController.php
+@@ -15,7 +15,7 @@ class ShipController extends ContainerAware
+      */
+     public function homepage()
+     {
+-        $pdo = $this->getPDO();
++        $pdo = $this->container->get('app_pdo');
+ 
+         $shipLoader = new ShipLoader($pdo);
+         $ships = $shipLoader->getShips();
+@@ -33,7 +33,7 @@ class ShipController extends ContainerAware
+      */
+     public function battleAction()
+     {
+-        $pdo = $this->getPDO();
++        $pdo = $this->container->get('app_pdo');
+ 
+         $shipLoader = new ShipLoader($pdo);
+         $shipA = $shipLoader->getRandomShip();
+@@ -49,19 +49,4 @@ class ShipController extends ContainerAware
+ 
+         return new Response($html);
+     }
+-
+-    /**
+-     * @return \PDO
+-     */
+-    private function getPDO()
+-    {
+-        $pdo = new \PDO(
+-            'mysql:host=localhost;dbname=ezsummer_oo',
+-            'root',
+-            ''
+-        );
+-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+-
+-        return $pdo;
+-    }
+ }
+diff --git a/config/config.yml b/config/config.yml
+index bc43099..a76f607 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -1,5 +1,10 @@
+ services:
+-    # todo - put any service definitions here
++    app_pdo:
++        class: PDO
++        arguments:
++            - 'mysql:host=localhost;dbname=ezsummer_oo'
++            - root
++            - ''
+ 
+ framework:
+     secret: %secret%

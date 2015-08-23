@@ -1,0 +1,40 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "di-move-pdo-into-controller",
+            "name": "DI: Move PDO into controller",
+            "description": null
+        },
+        {
+            "id": "di-pdo-into-private-method",
+            "name": "DI: PDO into private method",
+            "description": null
+        },
+        {
+            "id": "di-create-pdo-service",
+            "name": "DI: Create PDO service",
+            "description": null
+        },
+        {
+            "id": "di-pdo-setattribute",
+            "name": "DI: PDO::setAttribute",
+            "description": null
+        },
+        {
+            "id": "di-constant-expression",
+            "name": "DI: constant expression",
+            "description": null
+        },
+        {
+            "id": "di-shiploader-service",
+            "name": "DI: ShipLoader service",
+            "description": null
+        }
+    ],
+    "sha": "4263490844d506fd04c03da4e9847d07e95e41ee"
+}

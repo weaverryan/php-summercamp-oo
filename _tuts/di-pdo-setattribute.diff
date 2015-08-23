@@ -1,0 +1,16 @@
+diff --git a/config/config.yml b/config/config.yml
+index a76f607..ae63ee2 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -5,6 +5,11 @@ services:
+             - 'mysql:host=localhost;dbname=ezsummer_oo'
+             - root
+             - ''
++        calls:
++            - method: setAttribute
++              arguments:
++                - 3
++                - 2
+ 
+ framework:
+     secret: %secret%

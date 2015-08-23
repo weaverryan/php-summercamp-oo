@@ -1,0 +1,15 @@
+diff --git a/config/config.yml b/config/config.yml
+index ae63ee2..5296a98 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -8,8 +8,8 @@ services:
+         calls:
+             - method: setAttribute
+               arguments:
+-                - 3
+-                - 2
++                - "@=constant('PDO::ATTR_ERRMODE')"
++                - "@=constant('PDO::ERRMODE_EXCEPTION')"
+ 
+ framework:
+     secret: %secret%

@@ -1,0 +1,71 @@
+diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
+index c58dedb..e71e454 100644
+--- a/AppBundle/Controller/ShipController.php
++++ b/AppBundle/Controller/ShipController.php
+@@ -15,7 +15,14 @@ class ShipController extends ContainerAware
+      */
+     public function homepage()
+     {
+-        $shipLoader = new ShipLoader();
++        $pdo = new \PDO(
++            'mysql:host=localhost;dbname=ezsummer_oo',
++            'root',
++            ''
++        );
++        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
++
++        $shipLoader = new ShipLoader($pdo);
+         $ships = $shipLoader->getShips();
+ 
+         $html = $this->container->get('twig')->render(
+@@ -31,7 +38,14 @@ class ShipController extends ContainerAware
+      */
+     public function battleAction()
+     {
+-        $shipLoader = new ShipLoader();
++        $pdo = new \PDO(
++            'mysql:host=localhost;dbname=ezsummer_oo',
++            'root',
++            ''
++        );
++        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
++
++        $shipLoader = new ShipLoader($pdo);
+         $shipA = $shipLoader->getRandomShip();
+         $shipB = $shipLoader->getRandomShip();
+ 
+diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
+index 9280c33..1b82f56 100644
+--- a/AppBundle/Service/ShipLoader.php
++++ b/AppBundle/Service/ShipLoader.php
+@@ -8,6 +8,11 @@ class ShipLoader
+ {
+     private $pdo;
+ 
++    public function __construct(\PDO $pdo)
++    {
++        $this->pdo = $pdo;
++    }
++
+     /**
+      * @return Ship[]
+      */
+@@ -51,18 +56,6 @@ class ShipLoader
+      */
+     private function getPDO()
+     {
+-        if ($this->pdo === null) {
+-            $pdo = new \PDO(
+-                'mysql:host=localhost;dbname=ezsummer_oo',
+-                'root',
+-                ''
+-            );
+-
+-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+-
+-            $this->pdo = $pdo;
+-        }
+-
+         return $this->pdo;
+     }
+ 

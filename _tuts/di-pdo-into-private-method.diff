@@ -1,0 +1,52 @@
+diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
+index e71e454..af56521 100644
+--- a/AppBundle/Controller/ShipController.php
++++ b/AppBundle/Controller/ShipController.php
+@@ -15,12 +15,7 @@ class ShipController extends ContainerAware
+      */
+     public function homepage()
+     {
+-        $pdo = new \PDO(
+-            'mysql:host=localhost;dbname=ezsummer_oo',
+-            'root',
+-            ''
+-        );
+-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
++        $pdo = $this->getPDO();
+ 
+         $shipLoader = new ShipLoader($pdo);
+         $ships = $shipLoader->getShips();
+@@ -38,12 +33,7 @@ class ShipController extends ContainerAware
+      */
+     public function battleAction()
+     {
+-        $pdo = new \PDO(
+-            'mysql:host=localhost;dbname=ezsummer_oo',
+-            'root',
+-            ''
+-        );
+-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
++        $pdo = $this->getPDO();
+ 
+         $shipLoader = new ShipLoader($pdo);
+         $shipA = $shipLoader->getRandomShip();
+@@ -59,4 +49,19 @@ class ShipController extends ContainerAware
+ 
+         return new Response($html);
+     }
++
++    /**
++     * @return \PDO
++     */
++    private function getPDO()
++    {
++        $pdo = new \PDO(
++            'mysql:host=localhost;dbname=ezsummer_oo',
++            'root',
++            ''
++        );
++        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
++
++        return $pdo;
++    }
+ }
