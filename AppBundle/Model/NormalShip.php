@@ -43,14 +43,6 @@ class NormalShip
     }
 
     /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
      * @param int $weaponPower
      */
     public function setWeaponPower($weaponPower)
