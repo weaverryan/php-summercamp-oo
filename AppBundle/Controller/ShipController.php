@@ -33,7 +33,11 @@ class ShipController extends ContainerAware
     {
         $shipLoader = new ShipLoader();
         $shipA = $shipLoader->getRandomShip();
-        $shipB = $shipLoader->getRandomShip();
+
+        while ($shipA == ($shipB = $shipLoader->getRandomShip())) {
+            // avoiding ships fighting each other
+        }
+
 
         $battleManager = new BattleManager();
         $winningShip = $battleManager->battle($shipA, $shipB);
