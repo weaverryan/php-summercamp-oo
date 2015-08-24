@@ -25,7 +25,7 @@ index b2aa734..543cabb 100644
  
          while ($shipA == ($shipB = $shipLoader->getRandomShip())) {
 diff --git a/config/config.yml b/config/config.yml
-index 5296a98..e9f0519 100644
+index e2538a6..9c4a469 100644
 --- a/config/config.yml
 +++ b/config/config.yml
 @@ -11,6 +11,10 @@ services:

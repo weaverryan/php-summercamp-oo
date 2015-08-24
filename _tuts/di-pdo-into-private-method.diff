@@ -1,5 +1,5 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index 1b11496..0a9efe6 100644
+index 9f4f4b0..decec36 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
 @@ -15,12 +15,7 @@ class ShipController extends ContainerAware
@@ -7,9 +7,9 @@ index 1b11496..0a9efe6 100644
      public function homepage()
      {
 -        $pdo = new \PDO(
--            'mysql:host=localhost;dbname=ezsummer_oo',
--            'root',
--            ''
+-            'mysql:host=localhost;dbname=oop',
+-            'summer',
+-            'camp'
 -        );
 -        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 +        $pdo = $this->getPDO();
@@ -21,9 +21,9 @@ index 1b11496..0a9efe6 100644
      public function battleAction()
      {
 -        $pdo = new \PDO(
--            'mysql:host=localhost;dbname=ezsummer_oo',
--            'root',
--            ''
+-            'mysql:host=localhost;dbname=oop',
+-            'summer',
+-            'camp'
 -        );
 -        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 +        $pdo = $this->getPDO();
@@ -41,9 +41,9 @@ index 1b11496..0a9efe6 100644
 +    private function getPDO()
 +    {
 +        $pdo = new \PDO(
-+            'mysql:host=localhost;dbname=ezsummer_oo',
-+            'root',
-+            ''
++            'mysql:host=localhost;dbname=oop',
++            'summer',
++            'camp'
 +        );
 +        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 +

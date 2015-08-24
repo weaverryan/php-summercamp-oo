@@ -21,7 +21,7 @@ index 0000000..dc9e30d
 +    }
 +}
 diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
-index 108465b..06cdcc4 100644
+index c1244e3..b3e06ca 100644
 --- a/AppBundle/Service/ShipLoader.php
 +++ b/AppBundle/Service/ShipLoader.php
 @@ -2,6 +2,7 @@

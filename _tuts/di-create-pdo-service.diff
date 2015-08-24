@@ -1,5 +1,5 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index 0a9efe6..b2aa734 100644
+index decec36..b2aa734 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
 @@ -15,7 +15,7 @@ class ShipController extends ContainerAware
@@ -31,9 +31,9 @@ index 0a9efe6..b2aa734 100644
 -    private function getPDO()
 -    {
 -        $pdo = new \PDO(
--            'mysql:host=localhost;dbname=ezsummer_oo',
--            'root',
--            ''
+-            'mysql:host=localhost;dbname=oop',
+-            'summer',
+-            'camp'
 -        );
 -        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 -
@@ -41,7 +41,7 @@ index 0a9efe6..b2aa734 100644
 -    }
  }
 diff --git a/config/config.yml b/config/config.yml
-index bc43099..a76f607 100644
+index bc43099..b1f2c47 100644
 --- a/config/config.yml
 +++ b/config/config.yml
 @@ -1,5 +1,10 @@
@@ -50,9 +50,9 @@ index bc43099..a76f607 100644
 +    app_pdo:
 +        class: PDO
 +        arguments:
-+            - 'mysql:host=localhost;dbname=ezsummer_oo'
-+            - root
-+            - ''
++            - 'mysql:host=localhost;dbname=oop'
++            - 'summer'
++            - 'camp'
  
  framework:
      secret: %secret%
