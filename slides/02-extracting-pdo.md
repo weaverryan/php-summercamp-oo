@@ -1,4 +1,4 @@
-#### Step 2: Random Number! (in YAML)
+#### Step 2: Extracting PDO
 Stuck? No worries: http://bit.ly/summer-oo
 
 A) Create a Route and Controller that
