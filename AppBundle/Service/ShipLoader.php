@@ -54,9 +54,9 @@ class ShipLoader
     {
         if ($this->pdo === null) {
             $pdo = new \PDO(
-                'mysql:host=localhost;dbname=ezsummer_oo',
-                'root',
-                ''
+                'mysql:host=localhost;dbname=oop',
+                'summer',
+                'camp'
             );
 
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
