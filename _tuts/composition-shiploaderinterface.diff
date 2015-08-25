@@ -1,0 +1,67 @@
+diff --git a/AppBundle/Service/CacheableShipLoader.php b/AppBundle/Service/CacheableShipLoader.php
+index 34c0646..625ad92 100644
+--- a/AppBundle/Service/CacheableShipLoader.php
++++ b/AppBundle/Service/CacheableShipLoader.php
+@@ -4,7 +4,7 @@ namespace AppBundle\Service;
+ 
+ use Doctrine\Common\Cache\Cache;
+ 
+-class CacheableShipLoader
++class CacheableShipLoader implements ShipLoaderInterface
+ {
+     /**
+      * @var ShipLoader
+diff --git a/AppBundle/Service/RandomShipSelector.php b/AppBundle/Service/RandomShipSelector.php
+index c5c16b4..09a6487 100644
+--- a/AppBundle/Service/RandomShipSelector.php
++++ b/AppBundle/Service/RandomShipSelector.php
+@@ -11,7 +11,7 @@ class RandomShipSelector
+      */
+     private $shipLoader;
+ 
+-    public function __construct(ShipLoader $shipLoader)
++    public function __construct(ShipLoaderInterface $shipLoader)
+     {
+         $this->shipLoader = $shipLoader;
+     }
+diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
+index dc97f7c..82accbb 100644
+--- a/AppBundle/Service/ShipLoader.php
++++ b/AppBundle/Service/ShipLoader.php
+@@ -7,7 +7,7 @@ use AppBundle\Model\Deathstar;
+ use AppBundle\Model\JediShip;
+ use AppBundle\Model\NormalShip;
+ 
+-class ShipLoader
++class ShipLoader implements ShipLoaderInterface
+ {
+     private $pdo;
+ 
+diff --git a/AppBundle/Service/ShipLoaderInterface.php b/AppBundle/Service/ShipLoaderInterface.php
+new file mode 100644
+index 0000000..1166e71
+--- /dev/null
++++ b/AppBundle/Service/ShipLoaderInterface.php
+@@ -0,0 +1,8 @@
++<?php
++
++namespace AppBundle\Service;
++
++interface ShipLoaderInterface
++{
++    public function getShips();
++}
+\ No newline at end of file
+diff --git a/config/config.yml b/config/config.yml
+index 91ef34d..08e5dac 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -27,7 +27,7 @@ services:
+ 
+     random_ship_selector:
+         class: AppBundle\Service\RandomShipSelector
+-        arguments: ['@ship_loader']
++        arguments: ['@cacheable_ship_loader']
+ 
+ framework:
+     secret: %secret%

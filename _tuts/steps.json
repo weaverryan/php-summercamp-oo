@@ -59,7 +59,17 @@
             "id": "interface-add-interface",
             "name": "interface: Add interface",
             "description": null
+        },
+        {
+            "id": "composition-cacheableshiploader",
+            "name": "composition: CacheableShipLoader",
+            "description": null
+        },
+        {
+            "id": "composition-shiploaderinterface",
+            "name": "composition: ShipLoaderInterface",
+            "description": null
         }
     ],
-    "sha": "7d9c819aa6bf44505ff680be9310b9a5cdaef4fb"
+    "sha": "25eb860574224c7698da6fb9de76d79aee8a75c1"
 }
