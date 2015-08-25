@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Model\AbstractShip;
+use AppBundle\Model\Deathstar;
 use AppBundle\Model\JediShip;
 use AppBundle\Model\NormalShip;
 
@@ -30,6 +31,7 @@ class ShipLoader
 
         $jediShip = new JediShip();
         $ships[] = $jediShip;
+        $ships[] = new Deathstar();
 
         return $ships;
     }
