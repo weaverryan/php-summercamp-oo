@@ -1,8 +1,8 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index 9f4f4b0..decec36 100644
+index 67adff5..1eb61c2 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
-@@ -15,12 +15,7 @@ class ShipController extends ContainerAware
+@@ -16,12 +16,7 @@ class ShipController extends ContainerAware
       */
      public function homepage()
      {
@@ -16,7 +16,7 @@ index 9f4f4b0..decec36 100644
  
          $shipLoader = new ShipLoader($pdo);
          $ships = $shipLoader->getShips();
-@@ -38,12 +33,7 @@ class ShipController extends ContainerAware
+@@ -39,12 +34,7 @@ class ShipController extends ContainerAware
       */
      public function battleAction()
      {
@@ -28,9 +28,9 @@ index 9f4f4b0..decec36 100644
 -        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 +        $pdo = $this->getPDO();
  
-         $shipLoader = new ShipLoader($pdo);
-         $shipA = $shipLoader->getRandomShip();
-@@ -63,4 +53,19 @@ class ShipController extends ContainerAware
+         $randomShipSelector = new RandomShipSelector(new ShipLoader($pdo));
+ 
+@@ -60,4 +50,19 @@ class ShipController extends ContainerAware
  
          return new Response($html);
      }

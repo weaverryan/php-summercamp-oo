@@ -1,8 +1,8 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index 7dc7ae4..9f4f4b0 100644
+index 3b10243..67adff5 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
-@@ -15,7 +15,14 @@ class ShipController extends ContainerAware
+@@ -16,7 +16,14 @@ class ShipController extends ContainerAware
       */
      public function homepage()
      {
@@ -18,11 +18,11 @@ index 7dc7ae4..9f4f4b0 100644
          $ships = $shipLoader->getShips();
  
          $html = $this->container->get('twig')->render(
-@@ -31,7 +38,14 @@ class ShipController extends ContainerAware
+@@ -32,7 +39,14 @@ class ShipController extends ContainerAware
       */
      public function battleAction()
      {
--        $shipLoader = new ShipLoader();
+-        $randomShipSelector = new RandomShipSelector(new ShipLoader());
 +        $pdo = new \PDO(
 +            'mysql:host=localhost;dbname=oop',
 +            'summer',
@@ -30,10 +30,10 @@ index 7dc7ae4..9f4f4b0 100644
 +        );
 +        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 +
-+        $shipLoader = new ShipLoader($pdo);
-         $shipA = $shipLoader->getRandomShip();
++        $randomShipSelector = new RandomShipSelector(new ShipLoader($pdo));
  
-         while ($shipA == ($shipB = $shipLoader->getRandomShip())) {
+         list($shipA, $shipB) = $randomShipSelector->getRandomShips();
+ 
 diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
 index 0d1602a..c1244e3 100644
 --- a/AppBundle/Service/ShipLoader.php

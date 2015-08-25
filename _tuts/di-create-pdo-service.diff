@@ -1,8 +1,8 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index decec36..b2aa734 100644
+index 1eb61c2..5cba885 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
-@@ -15,7 +15,7 @@ class ShipController extends ContainerAware
+@@ -16,7 +16,7 @@ class ShipController extends ContainerAware
       */
      public function homepage()
      {
@@ -11,16 +11,16 @@ index decec36..b2aa734 100644
  
          $shipLoader = new ShipLoader($pdo);
          $ships = $shipLoader->getShips();
-@@ -33,7 +33,7 @@ class ShipController extends ContainerAware
+@@ -34,7 +34,7 @@ class ShipController extends ContainerAware
       */
      public function battleAction()
      {
 -        $pdo = $this->getPDO();
 +        $pdo = $this->container->get('app_pdo');
  
-         $shipLoader = new ShipLoader($pdo);
-         $shipA = $shipLoader->getRandomShip();
-@@ -53,19 +53,4 @@ class ShipController extends ContainerAware
+         $randomShipSelector = new RandomShipSelector(new ShipLoader($pdo));
+ 
+@@ -50,19 +50,4 @@ class ShipController extends ContainerAware
  
          return new Response($html);
      }
