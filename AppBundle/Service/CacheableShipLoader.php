@@ -4,7 +4,7 @@ namespace AppBundle\Service;
 
 use Doctrine\Common\Cache\Cache;
 
-class CacheableShipLoader
+class CacheableShipLoader implements ShipLoaderInterface
 {
     /**
      * @var ShipLoader

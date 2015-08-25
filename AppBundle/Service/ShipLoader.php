@@ -7,7 +7,7 @@ use AppBundle\Model\Deathstar;
 use AppBundle\Model\JediShip;
 use AppBundle\Model\NormalShip;
 
-class ShipLoader
+class ShipLoader implements ShipLoaderInterface
 {
     private $pdo;
 

@@ -11,7 +11,7 @@ class RandomShipSelector
      */
     private $shipLoader;
 
-    public function __construct(ShipLoader $shipLoader)
+    public function __construct(ShipLoaderInterface $shipLoader)
     {
         $this->shipLoader = $shipLoader;
     }
