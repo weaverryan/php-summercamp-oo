@@ -24,15 +24,13 @@ class JediShip extends AbstractShip
         return 100;
     }
 
-    public function getSingleAttackEffectiveness()
+    protected function getWeaponPower()
     {
-        $weaponPower = 10;
+        return 10;
+    }
 
-        // devastating attack?
-        if (rand(0, 10) == 10) {
-            return 5 * $weaponPower;
-        }
-
-        return $weaponPower;
+    protected function doesShipUseDevastatingAttack()
+    {
+        return rand(0, 10) > 5;
     }
 }
