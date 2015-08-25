@@ -16,7 +16,14 @@ class ShipController extends ContainerAware
      */
     public function homepage()
     {
-        $shipLoader = new ShipLoader();
+        $pdo = new \PDO(
+            'mysql:host=localhost;dbname=oop',
+            'summer',
+            'camp'
+        );
+        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+        $shipLoader = new ShipLoader($pdo);
         $ships = $shipLoader->getShips();
 
         $html = $this->container->get('twig')->render(
@@ -32,7 +39,14 @@ class ShipController extends ContainerAware
      */
     public function battleAction()
     {
-        $randomShipSelector = new RandomShipSelector(new ShipLoader());
+        $pdo = new \PDO(
+            'mysql:host=localhost;dbname=oop',
+            'summer',
+            'camp'
+        );
+        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+        $randomShipSelector = new RandomShipSelector(new ShipLoader($pdo));
 
         list($shipA, $shipB) = $randomShipSelector->getRandomShips();
 

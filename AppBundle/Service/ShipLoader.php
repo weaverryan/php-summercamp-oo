@@ -8,6 +8,11 @@ class ShipLoader
 {
     private $pdo;
 
+    public function __construct(\PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
     /**
      * @return NormalShip[]
      */
@@ -52,18 +57,6 @@ class ShipLoader
      */
     private function getPDO()
     {
-        if ($this->pdo === null) {
-            $pdo = new \PDO(
-                'mysql:host=localhost;dbname=oop',
-                'summer',
-                'camp'
-            );
-
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-
-            $this->pdo = $pdo;
-        }
-
         return $this->pdo;
     }
 
@@ -76,4 +69,3 @@ class ShipLoader
         return $shipsArray;
     }
 }
-
