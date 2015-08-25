@@ -2,7 +2,7 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Model\NormalShip;
+use AppBundle\Model\AbstractShip;
 
 class RandomShipSelector
 {
@@ -19,7 +19,7 @@ class RandomShipSelector
     /**
      * Returns 2 random ships for battle
      *
-     * @return NormalShip[]
+     * @return AbstractShip[]
      */
     public function getRandomShips()
     {

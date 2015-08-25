@@ -2,7 +2,7 @@
 
 namespace AppBundle\Model;
 
-class NormalShip
+class NormalShip extends AbstractShip
 {
     private $name;
 

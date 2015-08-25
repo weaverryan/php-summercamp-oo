@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Model\AbstractShip;
 use AppBundle\Model\JediShip;
 use AppBundle\Model\NormalShip;
 
@@ -15,7 +16,7 @@ class ShipLoader
     }
 
     /**
-     * @return NormalShip[]
+     * @return AbstractShip[]
      */
     public function getShips()
     {
@@ -27,16 +28,14 @@ class ShipLoader
             $ships[] = $this->createShipFromData($shipData);
         }
 
-        $jediShip = new JediShip('Our cool Jedi ship');
-        $jediShip->setWeaponPower(10);
-        $jediShip->setDefense(100);
+        $jediShip = new JediShip();
         $ships[] = $jediShip;
 
         return $ships;
     }
 
     /**
-     * @return NormalShip
+     * @return AbstractShip
      */
     public function getRandomShip()
     {
