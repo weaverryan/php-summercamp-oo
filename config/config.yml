@@ -27,7 +27,7 @@ services:
 
     random_ship_selector:
         class: AppBundle\Service\RandomShipSelector
-        arguments: ['@ship_loader']
+        arguments: ['@cacheable_ship_loader']
 
 framework:
     secret: %secret%
