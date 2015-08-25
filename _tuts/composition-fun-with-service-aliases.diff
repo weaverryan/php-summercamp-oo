@@ -1,0 +1,26 @@
+diff --git a/config/config.yml b/config/config.yml
+index 08e5dac..7dd2572 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -18,16 +18,19 @@ services:
+                 - "@=constant('PDO::ERRMODE_EXCEPTION')"
+ 
+     ship_loader:
++        alias: cacheable_ship_loader
++
++    normal_ship_loader:
+         class: AppBundle\Service\ShipLoader
+         arguments: ['@app_pdo']
+ 
+     cacheable_ship_loader:
+         class: AppBundle\Service\CacheableShipLoader
+-        arguments: ['@ship_loader', '@ship_cache']
++        arguments: ['@normal_ship_loader', '@ship_cache']
+ 
+     random_ship_selector:
+         class: AppBundle\Service\RandomShipSelector
+-        arguments: ['@cacheable_ship_loader']
++        arguments: ['@ship_loader']
+ 
+ framework:
+     secret: %secret%
