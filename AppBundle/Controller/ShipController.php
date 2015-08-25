@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Service\BattleManager;
+use AppBundle\Service\RandomShipSelector;
 use AppBundle\Service\ShipLoader;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,13 +32,9 @@ class ShipController extends ContainerAware
      */
     public function battleAction()
     {
-        $shipLoader = new ShipLoader();
-        $shipA = $shipLoader->getRandomShip();
+        $randomShipSelector = new RandomShipSelector(new ShipLoader());
 
-        while ($shipA == ($shipB = $shipLoader->getRandomShip())) {
-            // avoiding ships fighting each other
-        }
-
+        list($shipA, $shipB) = $randomShipSelector->getRandomShips();
 
         $battleManager = new BattleManager();
         $winningShip = $battleManager->battle($shipA, $shipB);
