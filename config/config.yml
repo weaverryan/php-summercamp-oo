@@ -5,6 +5,13 @@ services:
         arguments:
             - %kernel.cache_dir%/ship
 
+    app_pdo:
+        class: PDO
+        arguments:
+            - 'mysql:host=localhost;dbname=oop'
+            - 'summer'
+            - 'camp'
+
 framework:
     secret: %secret%
     templating:

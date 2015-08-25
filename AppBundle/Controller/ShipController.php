@@ -16,7 +16,7 @@ class ShipController extends ContainerAware
      */
     public function homepage()
     {
-        $pdo = $this->getPDO();
+        $pdo = $this->container->get('app_pdo');
 
         $shipLoader = new ShipLoader($pdo);
         $ships = $shipLoader->getShips();
@@ -34,7 +34,7 @@ class ShipController extends ContainerAware
      */
     public function battleAction()
     {
-        $pdo = $this->getPDO();
+        $pdo = $this->container->get('app_pdo');
 
         $randomShipSelector = new RandomShipSelector(new ShipLoader($pdo));
 
@@ -49,20 +49,5 @@ class ShipController extends ContainerAware
         );
 
         return new Response($html);
-    }
-
-    /**
-     * @return \PDO
-     */
-    private function getPDO()
-    {
-        $pdo = new \PDO(
-            'mysql:host=localhost;dbname=oop',
-            'summer',
-            'camp'
-        );
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-
-        return $pdo;
     }
 }
