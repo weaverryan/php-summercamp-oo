@@ -2,18 +2,18 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Model\NormalShip;
+use AppBundle\Model\AbstractShip;
 
 class BattleManager
 {
     /**
      * Our complex fighting algorithm!
      *
-     * @param NormalShip $ship1
-     * @param NormalShip $ship2
-     * @return NormalShip|null if the ships destroyed each other
+     * @param AbstractShip $ship1
+     * @param AbstractShip $ship2
+     * @return AbstractShip|null if the ships destroyed each other
      */
-    public function battle(NormalShip $ship1, NormalShip $ship2)
+    public function battle(AbstractShip $ship1, AbstractShip $ship2)
     {
         $ship1Health = $ship1->getDefense();
         $ship2Health = $ship2->getDefense();
