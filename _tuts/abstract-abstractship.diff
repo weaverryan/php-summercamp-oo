@@ -101,6 +101,28 @@ index c0d812d..e9e0017 100644
      {
          $ship1Health = $ship1->getDefense();
          $ship2Health = $ship2->getDefense();
+diff --git a/AppBundle/Service/RandomShipSelector.php b/AppBundle/Service/RandomShipSelector.php
+index 2d1d2e0..3f30834 100644
+--- a/AppBundle/Service/RandomShipSelector.php
++++ b/AppBundle/Service/RandomShipSelector.php
+@@ -2,7 +2,7 @@
+ 
+ namespace AppBundle\Service;
+ 
+-use AppBundle\Model\NormalShip;
++use AppBundle\Model\AbstractShip;
+ 
+ class RandomShipSelector
+ {
+@@ -19,7 +19,7 @@ class RandomShipSelector
+     /**
+      * Returns 2 random ships for battle
+      *
+-     * @return NormalShip[]
++     * @return AbstractShip[]
+      */
+     public function getRandomShips()
+     {
 diff --git a/AppBundle/Service/ShipLoader.php b/AppBundle/Service/ShipLoader.php
 index b3e06ca..7b1dc5a 100644
 --- a/AppBundle/Service/ShipLoader.php
