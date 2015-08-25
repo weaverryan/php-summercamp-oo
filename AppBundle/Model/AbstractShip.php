@@ -2,19 +2,11 @@
 
 namespace AppBundle\Model;
 
-abstract class AbstractShip
+abstract class AbstractShip implements ShipInterface
 {
-    abstract public function getName();
-
-    abstract public function getType();
-
-    abstract public function getDefense();
-
     abstract protected function getWeaponPower();
 
     abstract protected function doesShipUseDevastatingAttack();
-
-    abstract public function doesShipUseEvasiveManeuvering();
 
     public function getSingleAttackEffectiveness()
     {

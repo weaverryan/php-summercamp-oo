@@ -2,7 +2,7 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Model\AbstractShip;
+use AppBundle\Model\ShipInterface;
 use AppBundle\Model\Deathstar;
 use AppBundle\Model\JediShip;
 use AppBundle\Model\NormalShip;
@@ -17,7 +17,7 @@ class ShipLoader
     }
 
     /**
-     * @return AbstractShip[]
+     * @return ShipInterface[]
      */
     public function getShips()
     {
@@ -37,7 +37,7 @@ class ShipLoader
     }
 
     /**
-     * @return AbstractShip
+     * @return ShipInterface
      */
     public function getRandomShip()
     {

@@ -2,7 +2,7 @@
 
 namespace AppBundle\Model;
 
-class Deathstar extends AbstractShip
+class Deathstar implements ShipInterface
 {
     public function doesShipUseEvasiveManeuvering()
     {
@@ -24,13 +24,8 @@ class Deathstar extends AbstractShip
         return 10000000;
     }
 
-    protected function getWeaponPower()
+    public function getSingleAttackEffectiveness()
     {
         return 1000000;
-    }
-
-    protected function doesShipUseDevastatingAttack()
-    {
-        return true;
     }
 }
