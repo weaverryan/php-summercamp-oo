@@ -41,18 +41,20 @@ index 1eb61c2..5cba885 100644
 -    }
  }
 diff --git a/config/config.yml b/config/config.yml
-index bc43099..b1f2c47 100644
+index d1cf98b..d88452d 100644
 --- a/config/config.yml
 +++ b/config/config.yml
-@@ -1,5 +1,10 @@
- services:
--    # todo - put any service definitions here
+@@ -5,6 +5,13 @@ services:
+         arguments:
+             - %kernel.cache_dir%/ship
+ 
 +    app_pdo:
 +        class: PDO
 +        arguments:
 +            - 'mysql:host=localhost;dbname=oop'
 +            - 'summer'
 +            - 'camp'
- 
++
  framework:
      secret: %secret%
+     templating:

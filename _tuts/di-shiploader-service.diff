@@ -1,5 +1,5 @@
 diff --git a/AppBundle/Controller/ShipController.php b/AppBundle/Controller/ShipController.php
-index 5cba885..9d79769 100644
+index 5cba885..5a6b4c7 100644
 --- a/AppBundle/Controller/ShipController.php
 +++ b/AppBundle/Controller/ShipController.php
 @@ -16,9 +16,7 @@ class ShipController extends ContainerAware
@@ -13,29 +13,32 @@ index 5cba885..9d79769 100644
          $ships = $shipLoader->getShips();
  
          $html = $this->container->get('twig')->render(
-@@ -34,9 +32,8 @@ class ShipController extends ContainerAware
+@@ -34,9 +32,7 @@ class ShipController extends ContainerAware
       */
      public function battleAction()
      {
 -        $pdo = $this->container->get('app_pdo');
 -
 -        $randomShipSelector = new RandomShipSelector(new ShipLoader($pdo));
-+        $shipLoader = $this->container->get('ship_loader');
-+        $randomShipSelector = new RandomShipSelector($shipLoader);
++        $randomShipSelector = $this->container->get('random_ship_selector');
  
          list($shipA, $shipB) = $randomShipSelector->getRandomShips();
  
 diff --git a/config/config.yml b/config/config.yml
-index e2538a6..9c4a469 100644
+index 9bdf5d3..007cbfa 100644
 --- a/config/config.yml
 +++ b/config/config.yml
-@@ -11,6 +11,10 @@ services:
+@@ -17,6 +17,14 @@ services:
                  - "@=constant('PDO::ATTR_ERRMODE')"
                  - "@=constant('PDO::ERRMODE_EXCEPTION')"
  
 +    ship_loader:
 +        class: AppBundle\Service\ShipLoader
 +        arguments: ['@app_pdo']
++
++    random_ship_selector:
++        class: AppBundle\Service\RandomShipSelector
++        arguments: ['@ship_loader']
 +
  framework:
      secret: %secret%

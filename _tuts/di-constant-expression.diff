@@ -1,8 +1,8 @@
 diff --git a/config/config.yml b/config/config.yml
-index b295b74..e2538a6 100644
+index 29a35a4..9bdf5d3 100644
 --- a/config/config.yml
 +++ b/config/config.yml
-@@ -8,8 +8,8 @@ services:
+@@ -14,8 +14,8 @@ services:
          calls:
              - method: setAttribute
                arguments:
