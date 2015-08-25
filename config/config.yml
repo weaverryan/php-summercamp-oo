@@ -14,8 +14,8 @@ services:
         calls:
             - method: setAttribute
               arguments:
-                - 3
-                - 2
+                - "@=constant('PDO::ATTR_ERRMODE')"
+                - "@=constant('PDO::ERRMODE_EXCEPTION')"
 
 framework:
     secret: %secret%
