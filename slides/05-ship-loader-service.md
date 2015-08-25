@@ -7,9 +7,9 @@ Why is creating a ShipLoader in the controller a problem?
 
 ## STEPS
 
-A) Register a new ShipLoader service
+A) Register new services for ShipLoader and RandomShipSelector
 
-B) Use this in your controller
+B) Use these in your controller
 
 **GOAL**
 Everything should still work!
