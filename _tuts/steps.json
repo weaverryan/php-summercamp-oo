@@ -69,7 +69,12 @@
             "id": "composition-shiploaderinterface",
             "name": "composition: ShipLoaderInterface",
             "description": null
+        },
+        {
+            "id": "composition-fun-with-service-aliases",
+            "name": "composition: fun with service aliases",
+            "description": null
         }
     ],
-    "sha": "25eb860574224c7698da6fb9de76d79aee8a75c1"
+    "sha": "88651f6bd82706691d6a8df9af44f9af92a97334"
 }
