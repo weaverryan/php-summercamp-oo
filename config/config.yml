@@ -1,5 +1,9 @@
 services:
-    # todo - put any service definitions here
+    # for use later
+    ship_cache:
+        class: Doctrine\Common\Cache\FilesystemCache
+        arguments:
+            - %kernel.cache_dir%/ship
 
 framework:
     secret: %secret%
