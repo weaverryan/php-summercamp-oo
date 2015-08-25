@@ -11,6 +11,11 @@ services:
             - 'mysql:host=localhost;dbname=oop'
             - 'summer'
             - 'camp'
+        calls:
+            - method: setAttribute
+              arguments:
+                - 3
+                - 2
 
 framework:
     secret: %secret%
