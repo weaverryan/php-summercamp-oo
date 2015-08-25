@@ -16,9 +16,7 @@ class ShipController extends ContainerAware
      */
     public function homepage()
     {
-        $pdo = $this->container->get('app_pdo');
-
-        $shipLoader = new ShipLoader($pdo);
+        $shipLoader = $this->container->get('ship_loader');
         $ships = $shipLoader->getShips();
 
         $html = $this->container->get('twig')->render(
@@ -34,9 +32,7 @@ class ShipController extends ContainerAware
      */
     public function battleAction()
     {
-        $pdo = $this->container->get('app_pdo');
-
-        $randomShipSelector = new RandomShipSelector(new ShipLoader($pdo));
+        $randomShipSelector = $this->container->get('random_ship_selector');
 
         list($shipA, $shipB) = $randomShipSelector->getRandomShips();
 
