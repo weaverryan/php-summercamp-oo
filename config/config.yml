@@ -21,6 +21,10 @@ services:
         class: AppBundle\Service\ShipLoader
         arguments: ['@app_pdo']
 
+    cacheable_ship_loader:
+        class: AppBundle\Service\CacheableShipLoader
+        arguments: ['@ship_loader', '@ship_cache']
+
     random_ship_selector:
         class: AppBundle\Service\RandomShipSelector
         arguments: ['@ship_loader']
