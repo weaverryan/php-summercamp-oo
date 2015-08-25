@@ -17,6 +17,14 @@ services:
                 - "@=constant('PDO::ATTR_ERRMODE')"
                 - "@=constant('PDO::ERRMODE_EXCEPTION')"
 
+    ship_loader:
+        class: AppBundle\Service\ShipLoader
+        arguments: ['@app_pdo']
+
+    random_ship_selector:
+        class: AppBundle\Service\RandomShipSelector
+        arguments: ['@ship_loader']
+
 framework:
     secret: %secret%
     templating:
