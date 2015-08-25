@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Model\JediShip;
 use AppBundle\Model\NormalShip;
 
 class ShipLoader
@@ -26,6 +27,11 @@ class ShipLoader
             $ships[] = $this->createShipFromData($shipData);
         }
 
+        $jediShip = new JediShip('Our cool Jedi ship');
+        $jediShip->setWeaponPower(10);
+        $jediShip->setDefense(100);
+        $ships[] = $jediShip;
+
         return $ships;
     }
 
@@ -45,7 +51,6 @@ class ShipLoader
     {
         $name = $shipData['name'];
         $ship = new NormalShip($name);
-
         $ship->setWeaponPower($shipData['weapon_power']);
         $ship->setDefense($shipData['defense']);
 
