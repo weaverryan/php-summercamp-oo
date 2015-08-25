@@ -10,7 +10,19 @@ abstract class AbstractShip
 
     abstract public function getDefense();
 
-    abstract public function getSingleAttackEffectiveness();
+    abstract protected function getWeaponPower();
+
+    abstract protected function doesShipUseDevastatingAttack();
 
     abstract public function doesShipUseEvasiveManeuvering();
+
+    public function getSingleAttackEffectiveness()
+    {
+        // devastating attack?
+        if ($this->doesShipUseDevastatingAttack()) {
+            return 5 * $this->getWeaponPower();
+        }
+
+        return $this->getWeaponPower();
+    }
 }

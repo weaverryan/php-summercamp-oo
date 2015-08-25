@@ -47,18 +47,18 @@ class NormalShip extends AbstractShip
         return rand(0, 10) > 8;
     }
 
-    public function getSingleAttackEffectiveness()
-    {
-        // devastating attack?
-        if (rand(0, 10) == 10) {
-            return 5 * $this->weaponPower;
-        }
-
-        return $this->weaponPower;
-    }
-
     public function getType()
     {
         return 'normal';
+    }
+
+    protected function doesShipUseDevastatingAttack()
+    {
+        return rand(0, 10) == 10;
+    }
+
+    protected function getWeaponPower()
+    {
+        return $this->weaponPower;
     }
 }
