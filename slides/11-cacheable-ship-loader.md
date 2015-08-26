@@ -17,7 +17,7 @@ C) Register the "cacheable ship loader" as a service
 
 D) Update the `random_ship_selector` service so that it's
     passed the CacheableShipLoader
-w
+
 **GOAL**
 You should get a huge error about a bad object being
 passed to `RandomShipSelector`. What's the problem?

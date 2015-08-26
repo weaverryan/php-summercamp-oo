@@ -3,7 +3,7 @@ Stuck? No worries: http://bit.ly/summer-oo
 
 ## PROBLEM
 
-What's the issue with JediShip extending normal Ship? What are the
+What's the issue with JediShip extending normal NormalShip? What are the
 minimum things that a Ship actually needs?
 
 ## STEPS

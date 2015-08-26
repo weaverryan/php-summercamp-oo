@@ -19,4 +19,4 @@ D) Update `ShipLoader` to add one of these with
     hardcoded weaponPower (10) and defense (100)
 
 **GOAL**
-Everything should still work!
+Everything should still work, but there should be 5 ships

@@ -11,3 +11,4 @@ Important Classes:
 - `NormalShip`
 - `ShipLoader`
 - `BattleManager`
+- `RandomShipSelector`
