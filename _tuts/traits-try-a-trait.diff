@@ -1,0 +1,115 @@
+diff --git a/AppBundle/Model/NormalShip.php b/AppBundle/Model/NormalShip.php
+index 0baca6e..1768ae7 100644
+--- a/AppBundle/Model/NormalShip.php
++++ b/AppBundle/Model/NormalShip.php
+@@ -4,42 +4,11 @@ namespace AppBundle\Model;
+ 
+ class NormalShip extends AbstractShip
+ {
+-    private $name;
+-
+-    private $weaponPower = 0;
+-
+-    private $defense = 0;
++    use ShipSpecsTrait;
+ 
+     public function __construct($name)
+     {
+-        $this->name = $name;
+-    }
+-
+-    public function getName()
+-    {
+-        return $this->name;
+-    }
+-    
+-    public function setDefense($number)
+-    {
+-        if (!is_numeric($number)) {
+-            throw new \Exception('Defense must be a number, duh!');
+-        }
+-
+-        $this->defense = $number;
+-    }
+-
+-    public function getDefense()
+-    {
+-        return $this->defense;
+-    }
+-
+-    /**
+-     * @param int $weaponPower
+-     */
+-    public function setWeaponPower($weaponPower)
+-    {
+-        $this->weaponPower = $weaponPower;
++        $this->setName($name);
+     }
+ 
+     public function doesShipUseEvasiveManeuvering()
+@@ -56,9 +25,4 @@ class NormalShip extends AbstractShip
+     {
+         return rand(0, 10) == 10;
+     }
+-
+-    protected function getWeaponPower()
+-    {
+-        return $this->weaponPower;
+-    }
+ }
+diff --git a/AppBundle/Model/ShipSpecsTrait.php b/AppBundle/Model/ShipSpecsTrait.php
+new file mode 100644
+index 0000000..a52d95c
+--- /dev/null
++++ b/AppBundle/Model/ShipSpecsTrait.php
+@@ -0,0 +1,49 @@
++<?php
++/**
++ * Created by PhpStorm.
++ * User: weaverryan
++ * Date: 8/26/15
++ * Time: 1:11 AM
++ */
++
++namespace AppBundle\Model;
++
++
++trait ShipSpecsTrait
++{
++    private $name;
++
++    private $weaponPower = 0;
++
++    private $defense = 0;
++
++    public function getName()
++    {
++        return $this->name;
++    }
++
++    public function setName($name)
++    {
++        $this->name = $name;
++    }
++
++    public function getWeaponPower()
++    {
++        return $this->weaponPower;
++    }
++
++    public function setWeaponPower($weaponPower)
++    {
++        $this->weaponPower = $weaponPower;
++    }
++
++    public function getDefense()
++    {
++        return $this->defense;
++    }
++
++    public function setDefense($defense)
++    {
++        $this->defense = $defense;
++    }
++}
+\ No newline at end of file
