@@ -1,4 +1,4 @@
-#### Step 13 - Fun with Alises!
+#### Step 13 - Fun with Aliases!
 Stuck? No worries: http://bit.ly/summer-oo
 
 ## PROBLEM
